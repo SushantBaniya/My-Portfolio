@@ -1,6 +1,6 @@
 import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "./ui/button";
-
+import photo from "../Assets/me.jpg";
 const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -17,13 +17,10 @@ const Hero = () => {
             <div className="relative inline-block">
               <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-primary/50 shadow-lg shadow-primary/20">
                 <img
-                  src="/profile-photo.jpg"
-                  alt="Your Name"
+                  src={photo}
+                  alt="Sushant Baniya"
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    // Fallback to placeholder if no photo exists
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face";
-                  }}
+
                 />
               </div>
               <div className="absolute inset-0 rounded-full border-4 border-primary/30 animate-pulse" />
@@ -37,7 +34,7 @@ const Hero = () => {
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 animate-fade-in-up"
             style={{ animationDelay: "0.2s" }}
           >
-            <span className="text-foreground">Your Name</span>
+            <span className="text-foreground">Sushant Baniya</span>
           </h1>
           <h2
             className="text-2xl md:text-4xl lg:text-5xl font-bold text-muted-foreground mb-6 animate-fade-in-up"
@@ -67,7 +64,7 @@ const Hero = () => {
               <a href="#contact">Get In Touch</a>
             </Button>
             <Button variant="hero-outline" size="lg" asChild>
-              <a href="/resume.pdf" download="YourName_Resume.pdf">
+              <a href="/resume.pdf" download="Sushant Baniya_Resume.pdf">
                 <Download size={18} className="mr-2" />
                 Download Resume
               </a>
@@ -79,7 +76,7 @@ const Hero = () => {
             style={{ animationDelay: "0.6s" }}
           >
             <a
-              href="https://github.com"
+              href="https://github.com/SushantBaniya"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors duration-200"
@@ -87,7 +84,9 @@ const Hero = () => {
               <Github size={24} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="www.linkedin.com/in/
+sushant-baniya-4321a2343
+"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors duration-200"

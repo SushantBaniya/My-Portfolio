@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm flex items-center gap-1">
             Built with <Heart size={14} className="text-primary" /> by{" "}
-            <span className="text-foreground font-medium">Your Name</span>
+            <span className="text-foreground font-medium">Sushant Baniya</span>
           </p>
 
           <div className="flex gap-6">

@@ -1,6 +1,8 @@
-import { Mail, MapPin, Send } from "lucide-react";
-import { Button } from "./ui/button";
 import { useState } from "react";
+import { Mail, MapPin, Send } from "lucide-react";
+import emailjs from "@emailjs/browser";
+
+import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -10,15 +12,55 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you'd send this to your backend
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon!",
-    });
-    setFormData({ name: "", email: "", message: "" });
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      toast({
+        title: "Email not configured",
+        description: "Add your EmailJS keys to .env to send messages.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          reply_to: formData.email,
+          message: formData.message,
+          to_email: "sushantbaniya78@gmail.com",
+        },
+        {
+          publicKey,
+        }
+      );
+
+      toast({
+        title: "Message sent!",
+        description: "Thanks for reaching out. I'll get back to you soon!",
+      });
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Email send failed", error);
+      toast({
+        title: "Something went wrong",
+        description: "Unable to send your message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -54,10 +96,10 @@ const Contact = () => {
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">Email</h3>
                   <a
-                    href="mailto:your@email.com"
+                    href="mailto:sushantbaniya78@gmail.com"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    your@email.com
+                    sushantbaniya78@gmail.com
                   </a>
                 </div>
               </div>
@@ -70,7 +112,7 @@ const Contact = () => {
                   <h3 className="font-semibold text-foreground mb-1">
                     Location
                   </h3>
-                  <p className="text-muted-foreground">Your City, Country</p>
+                  <p className="text-muted-foreground">Kathmandu, Nepal</p>
                 </div>
               </div>
 
@@ -152,9 +194,15 @@ const Contact = () => {
                   placeholder="Your message..."
                 />
               </div>
-              <Button variant="hero" size="lg" type="submit" className="w-full">
+              <Button
+                variant="hero"
+                size="lg"
+                type="submit"
+                className="w-full"
+                disabled={isSubmitting}
+              >
                 <Send size={18} />
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>

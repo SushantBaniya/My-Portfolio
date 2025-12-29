@@ -2,13 +2,14 @@ import { ExternalLink, Github, Folder } from "lucide-react";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "Simple E-Commerce",
     description:
-      "A full-featured e-commerce platform built with React and Next.js. Includes cart functionality, payment integration, and admin dashboard.",
-    tags: ["React", "Next.js", "Stripe", "Tailwind CSS"],
-    github: "https://github.com",
+      "A streamlined storefront with product browsing, cart, and checkout flows, focused on fast performance and clean UI.",
+    tags: ["React", "Vite", "Stripe", "Tailwind CSS"],
+    github: "https://github.com/yourusername/simple-ecommerce",
     live: "https://example.com",
     featured: true,
+    image: "/simple-ecommerce.svg",
   },
   {
     title: "Task Management App",
@@ -18,6 +19,7 @@ const projects = [
     github: "https://github.com",
     live: "https://example.com",
     featured: true,
+    image: "/task-app.svg",
   },
   {
     title: "Portfolio Website",
@@ -27,15 +29,7 @@ const projects = [
     github: "https://github.com",
     live: "https://example.com",
     featured: false,
-  },
-  {
-    title: "Weather Dashboard",
-    description:
-      "A weather application that displays current weather and forecasts using external APIs.",
-    tags: ["React", "OpenWeather API", "Chart.js"],
-    github: "https://github.com",
-    live: "https://example.com",
-    featured: false,
+    image: "/portfolio.svg",
   },
   {
     title: "Blog Platform",
@@ -44,6 +38,7 @@ const projects = [
     tags: ["Django", "Python", "PostgreSQL", "React"],
     github: "https://github.com",
     featured: false,
+    image: "/blog.svg",
   },
   {
     title: "Recipe Finder",
@@ -52,6 +47,7 @@ const projects = [
     tags: ["React", "Spoonacular API", "LocalStorage"],
     github: "https://github.com",
     featured: false,
+    image: "/recipe.svg",
   },
 ];
 
@@ -70,11 +66,19 @@ const Projects = () => {
 
           {/* Featured Projects */}
           <div className="space-y-8 mb-16">
-            {featuredProjects.map((project, index) => (
+            {featuredProjects.map((project) => (
               <div
                 key={project.title}
                 className="bg-card border border-border rounded-xl p-6 md:p-8 card-hover"
               >
+                {project.image && (
+                  <img
+                    src={project.image}
+                    alt={`${project.title} preview`}
+                    className="w-full aspect-[16/9] object-cover rounded-lg mb-4 border border-border bg-muted"
+                    loading="lazy"
+                  />
+                )}
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                   <div>
                     <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
@@ -131,6 +135,14 @@ const Projects = () => {
                 key={project.title}
                 className="bg-card border border-border rounded-xl p-6 card-hover flex flex-col"
               >
+                {project.image && (
+                  <img
+                    src={project.image}
+                    alt={`${project.title} preview`}
+                    className="w-full aspect-video object-cover rounded-md mb-4 border border-border bg-muted"
+                    loading="lazy"
+                  />
+                )}
                 <div className="flex items-start justify-between mb-4">
                   <Folder className="text-primary" size={28} />
                   <div className="flex gap-3">

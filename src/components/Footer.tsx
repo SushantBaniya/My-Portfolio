@@ -67,9 +67,7 @@ const Footer = () => {
           {/* Credits */}
           <div className="text-center space-y-2">
             <p className="text-muted-foreground text-sm flex items-center justify-center gap-2 flex-wrap">
-              Designed & Built with
-              <Heart size={14} className="text-red-500 animate-pulse" />
-              and lots of
+              Designed & Built with lots of
               <Coffee size={14} className="text-amber-500" />
               by
               <span className="text-foreground font-medium">Sushant Baniya</span>

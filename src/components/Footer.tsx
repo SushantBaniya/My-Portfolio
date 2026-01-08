@@ -78,9 +78,7 @@ const Footer = () => {
           </div>
 
           {/* Fun easter egg hint */}
-          <p className="text-muted-foreground/40 text-xs font-mono">
-             try the Konami code 👀
-          </p>
+          
         </div>
       </div>
     </footer>

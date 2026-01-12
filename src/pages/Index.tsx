@@ -7,7 +7,7 @@ import Photos from "@/components/Photos";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FloatingShapes from "@/components/FloatingShapes";
-import EasterEgg from "@/components/EasterEgg";
+
 import { useCursorGlow } from "@/hooks/use-cursor-glow";
 import { Helmet } from "react-helmet";
 
@@ -29,7 +29,7 @@ const Index = () => {
         <FloatingShapes />
 
         {/* Easter egg for Konami code */}
-        <EasterEgg />
+       
 
         <Navbar />
         <main className="relative z-10">

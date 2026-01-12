@@ -65,7 +65,9 @@ const Hero = () => {
             style={{ animationDelay: "0.2s" }}
           >
             <span className="text-foreground">I'm </span>
-            <GlitchText text="Sushant Baniya" className="text-gradient" />
+            <h1 className="text-5xl font-bold text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]">
+      Sushant Baniya
+    </h1>
           </h1>
 
           <h2

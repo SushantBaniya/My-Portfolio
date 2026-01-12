@@ -77,7 +77,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Fun easter egg hint */}
+         
           
         </div>
       </div>
